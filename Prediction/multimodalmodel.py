@@ -125,16 +125,15 @@ nn_k_folds = 5
 
 n_repeats = 10
 
-# Illustrate ROC curve
+# Plot ROC curve
 
 def plot_roc_curve(fprs, tprs, auc_scores):
     """Plot the ROC curve for k-folds and average AUC"""
     plt.figure(figsize=(10, 6))
 
-    # Plot the ROC curve for each fold  ## 各foldのROC curveを描画したいとき
+    # Plot the ROC curve for each fold
     for i, (fpr, tpr) in enumerate(zip(fprs, tprs_interpolated)):
-        #plt.plot(fpr, tpr, lw=2, label=f'ROC Fold {i+1} (AUC = {auc_scores[i]:.4f})') ##各fold ROCカーブ（カラー)
-        plt.plot(fpr, tpr, linestyle = ':', color='grey',lw=2) ##各fold ROCカーブ(グレイ)
+        plt.plot(fpr, tpr, linestyle = ':', color='grey',lw=2)
 
     # Plot the average ROC and AUC score
     mean_tpr = np.mean(tprs_interpolated, axis=0)
